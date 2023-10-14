@@ -8,8 +8,7 @@ def createMatrix(rows: int, columns: int):
 
 
 def printMatrix(matrix: list):
-    for i in matrix:
-        print(i)
+    return '\n'.join(str(x) for x in matrix)
 
 
 def connecting(arr1: list, arr2: list):
@@ -114,24 +113,27 @@ bit_matrix = [
 
 
 def main(matrix: list):
+    matrixInString = printMatrix(matrix)
     # перевірка на відношення еквівалентності (рефлексивне, симетричне, транзитивне)
     if isReflexive(matrix, True) and isSymetric(matrix, 1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{printMatrix(matrix)}\nє відношенням еквівалентності.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням еквівалентності.")
 
     # перевірка на відношення часткового порядку (рефлексивне, антисиметричне, транзитивне)
     if isReflexive(matrix, True) and isSymetric(matrix, -1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{printMatrix(matrix)}\nє відношенням часткового порядку.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням часткового порядку.")
 
     # перевірка на відношення строгого порядку (антирефлексивне, антисиметричне, транзитивне)
     if isReflexive(matrix, False) and isSymetric(matrix, -1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{printMatrix(matrix)}\nє відношенням строгого порядку.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням строгого порядку.")
 
     if not isReflexive(matrix, True):
-        print(f"Рефлексивним доповненням матриці\n{printMatrix(matrix)}\nє матриця \n{printMatrix(reflexive_closure(matrix))}")
+        print(f"Рефлексивним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(reflexive_closure(matrix))}\n")
     if not isSymetric(matrix, 1):
-        print(f"Симетричним доповненням матриці\n{printMatrix(matrix)}\nє матриця \n{printMatrix(symetric_closure(matrix))}")
+        print(f"Симетричним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(symetric_closure(matrix))}\n")
     if not isTransitive(matrix):
-        print(f"Транизитивним доповненням матриці\n{printMatrix(matrix)}\nє матриця \n{printMatrix(transitive_closure(matrix))}")
+        print(f"Транзитивним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(transitive_closure(matrix))}\n")
+
+main(bit_matrix)
