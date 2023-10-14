@@ -112,11 +112,11 @@ bit_matrix = [
 ]
 
 bit_matrix1 = [
+    [0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0],
-    [0, 1, 1, 1, 1],
-    [0, 1, 1, 0, 1],
-    [0, 0, 0, 1, 0],
-    [0, 1, 1, 0, 1]
+    [0, 0, 1, 0, 0],
+    [0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0]
 ]
 
 
@@ -146,7 +146,7 @@ def main(matrix: list):
     if not isTransitive(matrix):
         print(
             f"Транзитивним замиканням матриці\n{matrixInString}\nє матриця \n{printMatrix(transitive_closure(matrix))}\n")
-        
+
     squared = composition(matrix, matrix)
     cubic = composition(squared, matrix)
     print(f"Друга степінь даного відношення:\n{printMatrix(squared)}\n")
