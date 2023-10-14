@@ -111,6 +111,14 @@ bit_matrix = [
     [1, 1, 0, 1, 1],
 ]
 
+bit_matrix1 = [
+    [1, 0, 0, 0, 0],
+    [0, 1, 1, 0, 1],
+    [0, 1, 1, 0, 1],
+    [0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 1]
+]
+
 
 def main(matrix: list):
     matrixInString = printMatrix(matrix)
@@ -130,10 +138,18 @@ def main(matrix: list):
             f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням строгого порядку.")
 
     if not isReflexive(matrix, True):
-        print(f"Рефлексивним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(reflexive_closure(matrix))}\n")
+        print(
+            f"Рефлексивним замиканням матриці\n{matrixInString}\nє матриця \n{printMatrix(reflexive_closure(matrix))}\n")
     if not isSymetric(matrix, 1):
-        print(f"Симетричним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(symetric_closure(matrix))}\n")
+        print(
+            f"Симетричним замиканням матриці\n{matrixInString}\nє матриця \n{printMatrix(symetric_closure(matrix))}\n")
     if not isTransitive(matrix):
-        print(f"Транзитивним доповненням матриці\n{matrixInString}\nє матриця \n{printMatrix(transitive_closure(matrix))}\n")
+        print(
+            f"Транзитивним замиканням матриці\n{matrixInString}\nє матриця \n{printMatrix(transitive_closure(matrix))}\n")
+        
+    squared = composition(matrix, matrix)
+    cubic = composition(squared, matrix)
+
 
 main(bit_matrix)
+main(bit_matrix1)
