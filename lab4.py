@@ -113,7 +113,7 @@ bit_matrix = [
 
 bit_matrix1 = [
     [1, 0, 0, 0, 0],
-    [0, 1, 1, 0, 1],
+    [0, 1, 1, 1, 1],
     [0, 1, 1, 0, 1],
     [0, 0, 0, 1, 0],
     [0, 1, 1, 0, 1]
@@ -125,17 +125,17 @@ def main(matrix: list):
     # перевірка на відношення еквівалентності (рефлексивне, симетричне, транзитивне)
     if isReflexive(matrix, True) and isSymetric(matrix, 1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням еквівалентності.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням еквівалентності.\n")
 
     # перевірка на відношення часткового порядку (рефлексивне, антисиметричне, транзитивне)
     if isReflexive(matrix, True) and isSymetric(matrix, -1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням часткового порядку.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням часткового порядку.\n")
 
     # перевірка на відношення строгого порядку (антирефлексивне, антисиметричне, транзитивне)
     if isReflexive(matrix, False) and isSymetric(matrix, -1) and isTransitive(matrix):
         print(
-            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням строгого порядку.")
+            f"Відношення задане булевою матрицею\n{matrixInString}\nє відношенням строгого порядку.\n")
 
     if not isReflexive(matrix, True):
         print(
@@ -149,6 +149,8 @@ def main(matrix: list):
         
     squared = composition(matrix, matrix)
     cubic = composition(squared, matrix)
+    print(f"Друга степінь даного відношення:\n{printMatrix(squared)}\n")
+    print(f"Третя степінь даного відношення:\n{printMatrix(cubic)}\n")
 
 
 main(bit_matrix)
